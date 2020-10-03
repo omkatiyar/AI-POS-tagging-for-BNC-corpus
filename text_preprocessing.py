@@ -19,7 +19,7 @@ import xml.etree.ElementTree as ET
 sys.stdin = open('input.txt', 'r') 
 sys.stdout = open('output.txt', 'w')
 
-#samle code for parsing xml file and extracting neccessary data from it
+#sample code for parsing xml file and extracting neccessary data from it
 mytree =ET.parse('sample.xml')
 myroot =mytree.getroot()
 for x in myroot:
