@@ -3,7 +3,9 @@ This file contains the codes that will be splitted into parts in future for spec
 This is a more or less prototype file of combined methods for preprocessing of xml files into
 required format 
 """
+
 import sys
+import os
 import string
 import nltk
 import re
@@ -20,11 +22,11 @@ sys.stdin = open('input.txt', 'r')
 sys.stdout = open('output.txt', 'w')
 
 #sample code for parsing xml file and extracting neccessary data from it
-mytree =ET.parse('sample.xml')
-myroot =mytree.getroot()
-for x in myroot:
-    for y in x:
-        print(y.text)
+# mytree =ET.parse('sample.xml')
+# myroot =mytree.getroot()
+# for x in myroot:
+#     for y in x:
+#         print(y.text)
 
 #reading manual input
 s=input()
@@ -61,8 +63,10 @@ lemmatizer = WordNetLemmatizer()
 for i in result:
     result2.append(lemmatizer.lemmatize(i))
 
+tagged_list=nltk.pos_tag(result2)
+
 # showing the processed result
-print(result2)
+print(tagged_list)
 
 
 
