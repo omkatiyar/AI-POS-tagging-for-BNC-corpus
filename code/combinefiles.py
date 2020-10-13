@@ -1,5 +1,7 @@
 # combinefiles.py
-
+#author : mohit kumar
+#date of creation : 13 oct 2020
+#time : morning, 10 am
 # this will be used to combine the files together
 
 
