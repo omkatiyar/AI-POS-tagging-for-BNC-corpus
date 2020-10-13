@@ -13,14 +13,17 @@ def filehandle_mk (source, dest) :
 	# we get the text into a variable
 	xmlfiletext = xmlfile.read();
 
+	#close xmlfile
+	xmlfile.close()
+
 	# make am xml tree from that text
 	tree = xmltree.fromstring(xmlfiletext)
 
 	# make list of word tags
-	wlist = tree.findall('w')
+	wlist = tree.iter('w')
 
-	#open dest file with append mode
-	dfile = open (dest, "a", encoding = "utf-8")
+	#open dest file with overwriting mode
+	dfile = open (dest[:-4]+".txt", "w+", encoding = "utf-8")
 
 	# put the data in the dfile
 	for word in wlist :
@@ -29,12 +32,12 @@ def filehandle_mk (source, dest) :
 		pos = word.get('pos')
 
 		word_tag = text+"_"+pos
-		print(word_tag)
+		
 		dfile.write(word_tag + "\n")
 
 
-	# at end of this file append a new line
-	dfile.write("\n")
+	#close file
+	dfile.close()
 
 
 
