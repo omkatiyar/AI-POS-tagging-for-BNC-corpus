@@ -31,7 +31,7 @@ def filehandle_mk (source, dest) :
 	for word in wlist :
 		text = word.text
 		text = text.rstrip()
-		pos = word.get('pos')
+		pos = word.get('c5')
 
 		word_tag = text+"_"+pos
 		
