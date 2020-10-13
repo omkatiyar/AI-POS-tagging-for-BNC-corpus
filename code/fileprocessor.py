@@ -33,7 +33,7 @@ def filehandle_mk (source, dest) :
 
 		word_tag = text+"_"+pos
 		
-		dfile.write(word_tag + "\n")
+		dfile.write(word_tag + " ")
 
 
 	#close file
