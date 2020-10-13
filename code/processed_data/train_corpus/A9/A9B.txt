@@ -1,1 +1,3 @@
-Max_SUBST Grundig_SUBST 81_ADJ died_VERB yesterday_ADV in_PREP Baden-Baden_SUBST He_PRON opened_VERB his_PRON shop_SUBST in_PREP Nurenburg_SUBST selling_VERB radios_SUBST and_CONJ producing_VERB transformers_SUBST in_PREP 1930_ADJ and_CONJ in_PREP 1945_ADJ he_PRON was_VERB allowed_VERB by_PREP the_ART Allies_SUBST to_PREP relocate_VERB his_PRON business_SUBST in_PREP Furth_SUBST where_ADV it_PRON was_VERB one_ADJ of_PREP the_ART first_ADJ to_PREP produce_VERB FM_SUBST radios_SUBST then_ADV television_SUBST sets_SUBST and_CONJ high_ADJ fidelity_SUBST reel-to-reel_SUBST tape_SUBST recorders_SUBST which_PRON serious_ADJ musicians_SUBST felt_VERB obliged_ADJ to_PREP pay_VERB serious_ADJ money_SUBST for_PREP 
+version https://git-lfs.github.com/spec/v1
+oid sha256:8995586fbd4875768ffc194c17d13d5e0657290e468258a69e949b0cea4be1c1
+size 713
