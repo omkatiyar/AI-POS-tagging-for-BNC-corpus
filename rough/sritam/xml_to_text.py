@@ -3,39 +3,26 @@ import sys
 import xml.etree.ElementTree as ET
 
 
-def to_text(file):
+def word_tag(source,destination):
 
-    mytree =ET.parse(file)
-    myroot =mytree.getroot()
-    print()
-    for word in myroot.iter():
-        print(word.tag)
+    file=open(source,'r',encoding="utf8")
+    data=file.read()
+    file.close()
 
-def list_files(startpath):
-    for root,dir,files in os.walk(startpath):
-        for f in files:
-            print(f)
-            with open(root+'\\'+f,"rb") as data:
-                to_text(data)
+    tree=ET.fromstring(data)
+    word_list=tree.iter('w')
 
-            break
+    dest_file=open(destination[:-3]+"txt","w+",encoding="utf8")
 
+    for word in word_list:
+        dest_file.write(word.text.strip()+"_"+word.get('c5')+" ")
+
+    dest_file.close()
 
 
 
 
-sys.stdout = open('output.txt', 'w')
 
-#printing all train files
 
-os.chdir('train_corpus')
-# print(os.getcwd())
-list_files(os.getcwd())
 
-print(" ")
-
-#printing all test files
-os.chdir('..')
-os.chdir('test_corpus')
-list_files(os.getcwd())
 
