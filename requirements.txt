@@ -1,8 +1,3 @@
-beautifulsoup4==4.9.2
-click==7.1.2
-joblib==0.17.0
-lxml==4.5.2
-nltk==3.5
-regex==2020.9.27
-soupsieve==2.0.1
-tqdm==4.50.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:55597a2f71cc4dbdd555a37b19d27785ed62d6454fba6766e5b639cdac421a3c
+size 119
