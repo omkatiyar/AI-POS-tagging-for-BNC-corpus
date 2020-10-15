@@ -1,24 +1,28 @@
 import os
 import sys
-
-def list_files(startpath):
-    for root,dir,files in os.walk(startpath):
-        if dir !='.git ':
-            for f in files:
-                print(f,end=" ")
+import xml.etree.ElementTree as ET
 
 
+def word_tag(source,destination):
 
-sys.stdout = open('output.txt', 'w')
+    file=open(source,'r',encoding="utf8")
+    data=file.read()
+    file.close()
 
-#printing all train files
-os.chdir('given_files/train_corpus')
-list_files(os.getcwd())
+    tree=ET.fromstring(data)
+    word_list=tree.iter('w')
 
-print(" ")
-#printing all test files
-os.chdir('..')
-os.chdir('test_corpus')
-list_files(os.getcwd())
+    dest_file=open(destination[:-3]+"txt","w+",encoding="utf8")
 
-# print (os.listdir())
+    for word in word_list:
+        dest_file.write(word.text.strip()+"_"+word.get('c5')+" ")
+
+    dest_file.close()
+
+
+
+
+
+
+
+
