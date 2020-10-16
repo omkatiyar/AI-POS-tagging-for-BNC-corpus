@@ -18,6 +18,7 @@ The tenor of this book has been pessimistic, but not, I hope, despairing. Some r
 Not wanting to seem too negative, I have outlined ways in which the discipline of English as currently constituted might divide, to the benefit of both parties. But knowing how the academic mind works, I am not optimistic about change. As Noel Annan wrote in his life of Leslie Stephen: â€˜The ingenuity in argument, the subtlety in drawing distinctions, the dexterous prevarications, the imperative reasons for procrastination, perpetually bewilder and confound the novice in university administration.â€™ In this respect, at least, little has altered since the nineteenth century. The most likely future is no overt change, with the discipline of English becoming less and less coherent, riven by feuds and revolts, but still presenting the external appearances of a large, well-established and respectable academic subject. It could go on for a long time in this condition, like the Spanish Empire in its centuries of decline.
 """
 txt = txt.lower()
+
 result = ''.join([i for i in txt if not i.isdigit()])
 # define punctuation
 punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
