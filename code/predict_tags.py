@@ -21,16 +21,17 @@ def predict(word_src,tag_src,prob_src,destination):
     pickled_prob.close()
 
     predict_tag={}
-
+    count=0
     for word in word_dict:
         x=0
         for tag in tag_dict:
-            if word+"_"+tag in prob_dict:
+            if word+"_"+tag in prob_dict :
                 if prob_dict[word+"_"+tag]>x:
                     x=prob_dict[word+"_"+tag]
                     predict_tag[word]=tag
-            else:
-                predict_tag[word]= "NN1"
+        if x==0 :
+            predict_tag[word]= "NN1"
+        # print(predict_tag[word])
 
     pickling_into=open(destination,"wb")
     pickle.dump(predict_tag,pickling_into)
