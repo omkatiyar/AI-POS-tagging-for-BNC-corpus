@@ -4,7 +4,9 @@ date: 15th november 2020
 time: 9:00 pm
 
 """
+
 import pickle
+import numpy as np
 
 #little bit difficult to determine the 
 #matrix but soon will update
@@ -25,17 +27,19 @@ def matrix(wordtag_src,prediction_src,tagtrain_src,tagtest_src):
     pickled_tagtest.close()
 
     index={}
-
-    i=0
+    tag_list =[]
+    count=0
     for tag in tagtrain_dict:
         if tag not in index:
-            index[tag]=i
-            i +=1
+            index[tag]=count
+            count +=1
+            tag_list.append(tag)
 
     for tag in tagtest_dict:
         if tag not in index:
-            index[tag]=i
-            i +=1
+            index[tag]=count
+            count +=1
+            tag_list.append(tag)
 
     mat=[[0 for i in range(len(index))] for j in range(len(index))]
 
@@ -50,7 +54,11 @@ def matrix(wordtag_src,prediction_src,tagtrain_src,tagtest_src):
 
             actual=item[1]
             predictd=prediction_dict[item[0]]
-            # print(index[actual])
-            # print(index[predictd])
             mat[index[actual]][index[predictd]] +=1
-    print(mat)
+
+    np.set_printoptions(threshold=np.inf ,linewidth=np.inf)
+    # define data
+    TAG = np.asarray(tag_list)
+    # save to csv file
+    np.savetxt('TAG.csv', TAG.astype(str), fmt='%s', delimiter=',')
+
