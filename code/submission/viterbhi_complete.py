@@ -166,7 +166,7 @@ except :
 
 
 # Viterbi Algorithm
-def Viterbhi(words, dataSetToUse = train_tagged_words):
+def Vanilla_Viterbi(words, dataSetToUse = train_tagged_words):
     state = []
     
     T = list(set([pair[1] for pair in dataSetToUse]))
@@ -193,14 +193,18 @@ def Viterbhi(words, dataSetToUse = train_tagged_words):
 
 
 print("Opening the test sentences files...")
+
 test_file = open('./Test_data_sentences/test_sentences_combined.txt', "r", encoding="utf8")
+
 print("File successfully loaded into memory....")
 print("processing file into list") 
 
 test_set = []
+
 for line in test_file :
 	# split the line into elements
 	pairs = line.split()
+
 	# iterate over each element
 	sent =[]
 	for elem in pairs :
@@ -220,9 +224,9 @@ test_run_base = [tup for sent in test_set for tup in sent]
 
 # list of untagged words
 test_tagged_words = [tup[0] for sent in test_set for tup in sent]
-tagged_seq = Viterbhi(test_tagged_words)
+tagged_seq = Vanilla_Viterbi(test_tagged_words)
 
 # accuracy
-Viterbhi_word_check = [i for i, j in zip(tagged_seq, test_run_base) if i == j] 
-Viterbhi_accuracy = len(Viterbhi_word_check)/len(tagged_seq) * 100
-print('Vanilla Viterbi Algorithm Accuracy: ', Viterbhi_accuracy)
+vanilla_viterbi_word_check = [i for i, j in zip(tagged_seq, test_run_base) if i == j] 
+vanilla_viterbi_accuracy = len(vanilla_viterbi_word_check)/len(tagged_seq) * 100
+print('Vanilla Viterbi Algorithm Accuracy: ', vanilla_viterbi_accuracy)
