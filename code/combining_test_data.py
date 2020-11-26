@@ -45,16 +45,23 @@ def combine_mk(source, dest) :
 
 
 
-s = "./Desktop/ML/Test_data_sentences"
-d = "./Desktop/ML/Test_data_sentences/test_sentences_combined.txt"
-dfile = open(d, "w+", encoding= "utf-8")
-dfile.close()
+# s = "./Desktop/ML/Test_data_sentences"
+# d = "./Desktop/ML/Test_data_sentences/test_sentences_combined.txt"
+# dfile = open(d, "w+", encoding= "utf-8")
+# dfile.close()
 
-combine_mk(s,d)
+# combine_mk(s,d)
 
-s = "./Desktop/ML/Test_data_sentences"
-d = "./Desktop/ML/Test_data_sentences/test_sentences_combined.txt"
-dfile = open(d, "w+", encoding= "utf-8")
+# s = "./Desktop/ML/Test_data_sentences"
+# d = "./Desktop/ML/Test_data_sentences/test_sentences_combined.txt"
+# dfile = open(d, "w+", encoding= "utf-8")
+# dfile.close()
+
+# combine_mk(s,d)
+
+s="processed_data/test_corpus/A1"
+d = "processed_data/test_corpus/A1/combine.txt"
+dfile = open(d,"w+", encoding="utf-8")
 dfile.close()
 
 combine_mk(s,d)
