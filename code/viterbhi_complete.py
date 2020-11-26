@@ -8,13 +8,35 @@ Created on Thu Nov 26 14:20:04 2020
 import collections
 import pandas as pd
 import matplotlib.pyplot as plt
-import nltk
+# import nltk
 import os
 import numpy as np
 import itertools
-file = open('./train_data_sentences/train_combine.txt', encoding="utf8")
-train_set= file.read()
-train_tagged_words = [tup for sent in train_set for tup in sent]
+
+
+print("Opening the train sentences files...")
+
+train_file = open('processed_data/train_combine_sentences.txt', "r", encoding="utf8")
+
+print("File successfully loaded into memory....")
+print("processing file into list") 
+
+#  train_tagged_words = [tup for sentence in train_set for tup in sentence]
+train_tagged_words = []
+# train_tagged_tokens = []
+# train_tagged_pos_tokens = []
+
+for line in train_file :
+	# split the line into elements
+	pairs = line.split()
+
+	# iterate over each element
+	for elem in pairs :
+		# split the word tag 
+		word,tag = elem.split("_")
+		train_tagged_words.append((word,tag))
+
+
 # tokens in the train set - train_tagged_words
 train_tagged_tokens = [tag[0] for tag in train_tagged_words]
 
@@ -60,44 +82,87 @@ for i, t1 in enumerate(list(training_pos_tag_set)):
 tags_df = pd.DataFrame(tags_matrix, columns = list(training_pos_tag_set), index=list(training_pos_tag_set))       
 
 
-# Viterbi Algorithm
-def Vanilla_Viterbi(words, train_bag = train_tagged_words):
-    state = []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # Viterbi Algorithm
+# def Vanilla_Viterbi(words, train_bag = train_tagged_words):
+#     state = []
     
-    T = list(set([pair[1] for pair in train_bag]))
+#     T = list(set([pair[1] for pair in train_bag]))
     
-    for key, word in enumerate(words):
-        #initialise list of probability column for a given observation
-        p = [] 
-        for tag in T:
-            if key == 0:
-                transition_p = tags_df.loc['.', tag]
-            else:
-                transition_p = tags_df.loc[state[-1], tag]
+#     for key, word in enumerate(words):
+#         #initialise list of probability column for a given observation
+#         p = [] 
+#         for tag in T:
+#             if key == 0:
+#                 transition_p = tags_df.loc['.', tag]
+#             else:
+#                 transition_p = tags_df.loc[state[-1], tag]
                 
-            # compute emission and state probabilities
-            emission_p = word_given_tag(words[key], tag)[0]/word_given_tag(words[key], tag)[1]
-            state_probability = emission_p * transition_p    
-            p.append(state_probability)
+#             # compute emission and state probabilities
+#             emission_p = word_given_tag(words[key], tag)[0]/word_given_tag(words[key], tag)[1]
+#             state_probability = emission_p * transition_p    
+#             p.append(state_probability)
             
-        pmax = max(p)
-        # getting state for which probability is maximum
-        state_max = T[p.index(pmax)] 
-        state.append(state_max)
-    return list(zip(words, state)) 
+#         pmax = max(p)
+#         # getting state for which probability is maximum
+#         state_max = T[p.index(pmax)] 
+#         state.append(state_max)
+#     return list(zip(words, state)) 
 
-test_file=open("./Test_data_sentences/test_sentences_combined.txt",encoding="utf8")
-test_set = test_file.read()
+# test_file=open("./Test_data_sentences/test_sentences_combined.txt",encoding="utf8")
+# test_set = test_file.read()
 
-test_tagged_words = [tup[0] for sent in test_set for tup in sent]
-# list of tagged words
-test_run_base = [tup for sent in test_set for tup in sent]
+# test_tagged_words = [tup[0] for sent in test_set for tup in sent]
+# # list of tagged words
+# test_run_base = [tup for sent in test_set for tup in sent]
 
-# list of untagged words
-test_tagged_words = [tup[0] for sent in test_set for tup in sent]
-tagged_seq = Vanilla_Viterbi(test_tagged_words)
+# # list of untagged words
+# test_tagged_words = [tup[0] for sent in test_set for tup in sent]
+# tagged_seq = Vanilla_Viterbi(test_tagged_words)
 
-# accuracy
-vanilla_viterbi_word_check = [i for i, j in zip(tagged_seq, test_run_base) if i == j] 
-vanilla_viterbi_accuracy = len(vanilla_viterbi_word_check)/len(tagged_seq) * 100
-print('Vanilla Viterbi Algorithm Accuracy: ', vanilla_viterbi_accuracy)
+# # accuracy
+# vanilla_viterbi_word_check = [i for i, j in zip(tagged_seq, test_run_base) if i == j] 
+# vanilla_viterbi_accuracy = len(vanilla_viterbi_word_check)/len(tagged_seq) * 100
+# print('Vanilla Viterbi Algorithm Accuracy: ', vanilla_viterbi_accuracy)
