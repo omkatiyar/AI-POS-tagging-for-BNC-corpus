@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -- coding: utf-8 --
 """
 Created on Thu Nov 26 14:20:04 2020
 
@@ -29,12 +29,21 @@ train_tagged_words = []
 
 count = 0
 for line in train_file :
+<<<<<<< HEAD
+    # split the line into elements
+    pairs = line.split()
+    count = count + len(pairs)
+    
+
+    
+=======
 	# split the line into elements
 	pairs = line.split()
 	count = count + len(pairs)
 	
 
 	
+>>>>>>> upstream/master
 print(count)
 
 
@@ -50,9 +59,29 @@ print("processing file into list")
 
 
 for line in train_file :
-	# split the line into elements
-	pairs = line.split()
+    # split the line into elements
+    pairs = line.split()
 
+    # iterate over each element
+    for elem in pairs :
+        # split the word tag 
+        lis = elem.split("_")
+        if len(lis) < 2 :
+            continue
+        train_tagged_words.append((lis[0],lis[1]))
+    
+print("file successfully changed into list")
+    
+# print(train_tagged_words)
+
+
+
+
+
+
+
+<<<<<<< HEAD
+=======
 	# iterate over each element
 	for elem in pairs :
 		# split the word tag 
@@ -71,6 +100,7 @@ print("file successfully changed into list")
 
 
 
+>>>>>>> upstream/master
 
 
 # tokens in the train set - train_tagged_words
@@ -166,10 +196,17 @@ except :
 
 
 # Viterbi Algorithm
+<<<<<<< HEAD
+def Vanilla_Viterbi(words, train_bag = train_tagged_words):
+    state = []
+    
+    T = list(set([pair[1] for pair in train_bag]))
+=======
 def Viterbhi(words, dataSetToUse = train_tagged_words):
     state = []
     
     T = list(set([pair[1] for pair in dataSetToUse]))
+>>>>>>> upstream/master
     
     for key, word in enumerate(words):
         #initialise list of probability column for a given observation
@@ -191,6 +228,12 @@ def Viterbhi(words, dataSetToUse = train_tagged_words):
         state.append(state_max)
     return list(zip(words, state)) 
 
+<<<<<<< HEAD
+test_file=open("./Test_data_sentences/test_sentences_combined.txt",encoding="utf8")
+test_set = test_file.read()
+
+test_tagged_words = [tup[0] for sent in test_set for tup in sent]
+=======
 
 print("Opening the test sentences files...")
 test_file = open('./Test_data_sentences/test_sentences_combined.txt', "r", encoding="utf8")
@@ -215,14 +258,24 @@ for line in test_file :
 print("file successfully changed into list")
 
 
+>>>>>>> upstream/master
 # list of tagged words
 test_run_base = [tup for sent in test_set for tup in sent]
 
 # list of untagged words
 test_tagged_words = [tup[0] for sent in test_set for tup in sent]
+<<<<<<< HEAD
+tagged_seq = Vanilla_Viterbi(test_tagged_words)
+
+# accuracy
+vanilla_viterbi_word_check = [i for i, j in zip(tagged_seq, test_run_base) if i == j] 
+vanilla_viterbi_accuracy = len(vanilla_viterbi_word_check)/len(tagged_seq) * 100
+print('Vanilla Viterbi Algorithm Accuracy: ', vanilla_viterbi_accuracy)
+=======
 tagged_seq = Viterbhi(test_tagged_words)
 
 # accuracy
 Viterbhi_word_check = [i for i, j in zip(tagged_seq, test_run_base) if i == j] 
 Viterbhi_accuracy = len(Viterbhi_word_check)/len(tagged_seq) * 100
 print('Vanilla Viterbi Algorithm Accuracy: ', Viterbhi_accuracy)
+>>>>>>> upstream/master

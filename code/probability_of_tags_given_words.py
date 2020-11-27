@@ -38,6 +38,7 @@ def probability(word_src,tag_src,wordtag_src,destination):
     pickling_into=open(destination,"wb")
     pickle.dump(word_probability,pickling_into)
     pickling_into.close()
+    print(len(word_dict))
 
 
 
