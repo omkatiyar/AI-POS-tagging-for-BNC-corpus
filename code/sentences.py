@@ -22,22 +22,16 @@ def filehandle_mk_Sentences (source, dest) :
 
 	#close xmlfile
 	xmlfile.close()
-
 	# make am xml tree from that text
 	tree = xmltree.fromstring(xmlfiletext)
-
 	# make list of sentences
 	slist = tree.iter('s')
-
 	#open dest file with overwriting mode
 	dfile = open (dest[:-4]+"_sentence.txt", "w+", encoding = "utf-8")
-
 	# put the data in the dfile
 	for sentence in slist :
-
 		# declare a line variable to store the sentence
 		line = ""
-
 		# iterate over every variable in sentence
 		for elem in sentence :
 			# fetch pos tag of this elem
@@ -52,15 +46,10 @@ def filehandle_mk_Sentences (source, dest) :
 			txt = txt.strip()	
 			# append in the sentence this word
 			line = line + txt + "_"+ pos +" "
-
 		# for word loop finshes
-
 		# write the sentence to the file
 		dfile.write(line+"\n")	
-
 	# for sentence loop finished 
-
-
 	#close file
 	dfile.close()
 
