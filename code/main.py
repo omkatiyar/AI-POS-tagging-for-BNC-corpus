@@ -25,7 +25,7 @@ from confusion_matrix import matrix
 
 # mohit changes on 26 nov 2020
 # importing the senntences module :)
-from sentnces import makeSentences_mk
+from sentences import makeSentences_mk
 # changes by mohit done
 
 #preprocessing the xml files  
@@ -35,16 +35,16 @@ tmp="pickle/"
 
 #calculating the probability of words given tags
 
-# probability(tmp+"words_train",tmp+"tags_train",
-#     tmp+"wordtag_train",tmp+"word_probability")
+probability(tmp+"words_train",tmp+"tags_train",
+    tmp+"wordtag_train",tmp+"word_probability")
 
 # predict(tmp+"words_test",tmp+"tags_train",
 #     tmp+"word_probability",tmp+"tag_predict")
 
 # accuracy(tmp+"words_test",tmp+"wordtag_test",tmp+"tag_predict")
 
-matrix("processed_data/test_combine.txt",tmp+"tag_predict",
-    tmp+"tags_train",tmp+"tags_test")
+# matrix("processed_data/test_combine.txt",tmp+"tag_predict",
+#     tmp+"tags_train",tmp+"tags_test")
 
 
 # # EDITS BY :Mohit
@@ -53,13 +53,13 @@ matrix("processed_data/test_combine.txt",tmp+"tag_predict",
 # # code to make distribution based on sentences
 
 
-# sourceForSentences = "given_data"
-# print("Source Data for Sentences Selected")
-# destForSentences = "processed_data"
-# print("Dest Data for Sentences Selected")
-# print("Processing started ...")
-# makeSentences_mk(sourceForSentences, destForSentences)
-# print("... processing finished!")
+sourceForSentences = "given_data"
+print("Source Data for Sentences Selected")
+destForSentences = "processed_data"
+print("Dest Data for Sentences Selected")
+print("Processing started ...")
+makeSentences_mk(sourceForSentences, destForSentences)
+print("... processing finished!")
 
 # # sentences formed
 
