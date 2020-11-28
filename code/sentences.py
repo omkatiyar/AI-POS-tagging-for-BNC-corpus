@@ -69,12 +69,14 @@ def makeSentences_mk(source, dest) :
 	else:
 		# so the source is a folder, we need to make corresponding folder in the dest 
 		#check if dest has the folder
-		if not isdir(dest):
-			mkdir(dest)
+		
+		#edited by SRITAM: storing the result in a separate destination  
+		if not isdir(dest+"_sentence"):
+			mkdir(dest+"_sentence")
 		
 		# now enumerate all the items in the source directory    
 		for item in listdir(source):
-			makeSentences_mk(source+'/'+item,dest+'/'+item)
+			makeSentences_mk(source+'/'+item,dest+"_sentence"+'/'+item)
 
 
 
