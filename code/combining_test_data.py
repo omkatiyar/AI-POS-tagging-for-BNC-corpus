@@ -59,8 +59,8 @@ def combine_mk(source, dest) :
 
 # combine_mk(s,d)
 
-s="processed_data/test_corpus/A1"
-d = "processed_data/test_corpus/A1/combine.txt"
+s="processed_data"
+d = "processed_data/test_combine"
 dfile = open(d,"w+", encoding="utf-8")
 dfile.close()
 

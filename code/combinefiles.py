@@ -38,16 +38,16 @@ def combine_mk(source, dest) :
 
 
 
-s = "processed_data/train_corpus"
-d = "processed_data/train_combine.txt"
+s = "processed_data_sentence/train_corpus_sentence"
+d = "processed_data_sentence/train_sentence_combine_.txt"
 dfile = open(d, "w+", encoding= "utf-8")
 dfile.close()
 
 combine_mk(s,d)
 
 
-s = "processed_data/test_corpus"
-d = "processed_data/test_combine.txt"
+s = "processed_data_sentence/test_corpus_sentence"
+d = "processed_data_sentence/test_sentence_combine.txt"
 dfile = open(d, "w+", encoding= "utf-8")
 dfile.close()
 
